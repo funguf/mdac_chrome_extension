@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 400px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .section h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 3px;
+      font-weight: bold;
+      color: #555;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      margin: 5px 0;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .warning {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+    .person-entry {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .remove-person {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <h2>MDAC Form Filler</h2>
+  
+  <div class="section">
+    <h3>Quick Actions</h3>
+    <button id="exportYaml">Export to YAML</button>
+    <button id="importYaml">Import YAML File</button>
+    <input type="file" id="yamlFileInput" accept=".yaml,.yml,.json" style="display: none;">
+    <button id="openMdacPage" style="background-color: #007bff;">Open MDAC Registration Page</button>
+  </div>
+  
+  <div class="warning">
+    <strong>Important:</strong> Navigate to the MDAC registration page first, then use this extension to fill the form.
+  </div>
+
+  <div class="section">
+    <h3>Common Data</h3>
+    <input type="email" id="email" placeholder="Email Address" required>
+    <input type="text" id="mobile" placeholder="Mobile Number (without country code)" required>
+    <select id="mobileDialingCode">
+      <option value="">Select Country Code</option>
+      <option value="93">+93 (Afghanistan)</option>
+      <option value="355">+355 (Albania)</option>
+      <option value="213">+213 (Algeria)</option>
+      <option value="1">+1 (USA/Canada)</option>
+      <option value="376">+376 (Andorra)</option>
+      <option value="244">+244 (Angola)</option>
+      <option value="54">+54 (Argentina)</option>
+      <option value="374">+374 (Armenia)</option>
+      <option value="61">+61 (Australia)</option>
+      <option value="43">+43 (Austria)</option>
+      <option value="994">+994 (Azerbaijan)</option>
+      <option value="973">+973 (Bahrain)</option>
+      <option value="880">+880 (Bangladesh)</option>
+      <option value="32">+32 (Belgium)</option>
+      <option value="975">+975 (Bhutan)</option>
+      <option value="591">+591 (Bolivia)</option>
+      <option value="387">+387 (Bosnia and Herzegovina)</option>
+      <option value="267">+267 (Botswana)</option>
+      <option value="55">+55 (Brazil)</option>
+      <option value="673">+673 (Brunei)</option>
+      <option value="359">+359 (Bulgaria)</option>
+      <option value="855">+855 (Cambodia)</option>
+      <option value="237">+237 (Cameroon)</option>
+      <option value="56">+56 (Chile)</option>
+      <option value="86">+86 (China)</option>
+      <option value="57">+57 (Colombia)</option>
+      <option value="385">+385 (Croatia)</option>
+      <option value="53">+53 (Cuba)</option>
+      <option value="357">+357 (Cyprus)</option>
+      <option value="420">+420 (Czech Republic)</option>
+      <option value="45">+45 (Denmark)</option>
+      <option value="20">+20 (Egypt)</option>
+      <option value="372">+372 (Estonia)</option>
+      <option value="251">+251 (Ethiopia)</option>
+      <option value="679">+679 (Fiji)</option>
+      <option value="358">+358 (Finland)</option>
+      <option value="33">+33 (France)</option>
+      <option value="995">+995 (Georgia)</option>
+      <option value="49">+49 (Germany)</option>
+      <option value="233">+233 (Ghana)</option>
+      <option value="30">+30 (Greece)</option>
+      <option value="36">+36 (Hungary)</option>
+      <option value="354">+354 (Iceland)</option>
+      <option value="91">+91 (India)</option>
+      <option value="62">+62 (Indonesia)</option>
+      <option value="98">+98 (Iran)</option>
+      <option value="964">+964 (Iraq)</option>
+      <option value="353">+353 (Ireland)</option>
+      <option value="972">+972 (Israel)</option>
+      <option value="39">+39 (Italy)</option>
+      <option value="81">+81 (Japan)</option>
+      <option value="962">+962 (Jordan)</option>
+      <option value="7">+7 (Kazakhstan)</option>
+      <option value="254">+254 (Kenya)</option>
+      <option value="82">+82 (South Korea)</option>
+      <option value="965">+965 (Kuwait)</option>
+      <option value="996">+996 (Kyrgyzstan)</option>
+      <option value="856">+856 (Laos)</option>
+      <option value="371">+371 (Latvia)</option>
+      <option value="961">+961 (Lebanon)</option>
+      <option value="370">+370 (Lithuania)</option>
+      <option value="352">+352 (Luxembourg)</option>
+      <option value="60">+60 (Malaysia)</option>
+      <option value="960">+960 (Maldives)</option>
+      <option value="356">+356 (Malta)</option>
+      <option value="52">+52 (Mexico)</option>
+      <option value="976">+976 (Mongolia)</option>
+      <option value="382">+382 (Montenegro)</option>
+      <option value="212">+212 (Morocco)</option>
+      <option value="95">+95 (Myanmar)</option>
+      <option value="977">+977 (Nepal)</option>
+      <option value="31">+31 (Netherlands)</option>
+      <option value="64">+64 (New Zealand)</option>
+      <option value="234">+234 (Nigeria)</option>
+      <option value="47">+47 (Norway)</option>
+      <option value="968">+968 (Oman)</option>
+      <option value="92">+92 (Pakistan)</option>
+      <option value="51">+51 (Peru)</option>
+      <option value="63">+63 (Philippines)</option>
+      <option value="48">+48 (Poland)</option>
+      <option value="351">+351 (Portugal)</option>
+      <option value="974">+974 (Qatar)</option>
+      <option value="40">+40 (Romania)</option>
+      <option value="7">+7 (Russia)</option>
+      <option value="966">+966 (Saudi Arabia)</option>
+      <option value="381">+381 (Serbia)</option>
+      <option value="65">+65 (Singapore)</option>
+      <option value="421">+421 (Slovakia)</option>
+      <option value="386">+386 (Slovenia)</option>
+      <option value="27">+27 (South Africa)</option>
+      <option value="34">+34 (Spain)</option>
+      <option value="94">+94 (Sri Lanka)</option>
+      <option value="46">+46 (Sweden)</option>
+      <option value="41">+41 (Switzerland)</option>
+      <option value="886">+886 (Taiwan)</option>
+      <option value="992">+992 (Tajikistan)</option>
+      <option value="66">+66 (Thailand)</option>
+      <option value="90">+90 (Turkey)</option>
+      <option value="993">+993 (Turkmenistan)</option>
+      <option value="380">+380 (Ukraine)</option>
+      <option value="971">+971 (UAE)</option>
+      <option value="44">+44 (United Kingdom)</option>
+      <option value="1">+1 (United States)</option>
+      <option value="998">+998 (Uzbekistan)</option>
+      <option value="84">+84 (Vietnam)</option>
+      <option value="967">+967 (Yemen)</option>
+    </select>
+    
+    <label for="arrivalDate">Arrival Date:</label>
+    <input type="date" id="arrivalDate" placeholder="Arrival Date" required>
+    <label for="departureDate">Departure Date:</label>
+    <input type="date" id="departureDate" placeholder="Departure Date" required>
+    
+    <select id="modeOfTravel">
+      <option value="">Mode of Travel</option>
+      <option value="AIR">Air</option>
+      <option value="LAND">Land</option>
+      <option value="SEA">Sea</option>
+    </select>
+    
+    <input type="text" id="lastPortEmbarkation" placeholder="Last Port of Embarkation" required>
+    <input type="text" id="transportNumber" placeholder="Flight/Transport Number" required>
+    
+    <select id="accommodationStay">
+      <option value="">Accommodation Type</option>
+      <option value="HOTEL/MOTEL/REST HOUSE">Hotel/Motel/Rest House</option>
+      <option value="RESORT">Resort</option>
+      <option value="HOMESTAY">Homestay</option>
+      <option value="APARTMENT">Apartment</option>
+      <option value="FRIEND/RELATIVE">Friend/Relative</option>
+    </select>
+    
+    <input type="text" id="accommodationAddress" placeholder="Accommodation Address" required>
+    <input type="text" id="accommodationAddress2" placeholder="Accommodation Address 2 (Optional)">
+    
+    <select id="state">
+      <option value="">Select State</option>
+      <option value="KUALA LUMPUR">Kuala Lumpur</option>
+      <option value="SELANGOR">Selangor</option>
+      <option value="JOHOR">Johor</option>
+      <option value="PENANG">Penang</option>
+      <option value="PERAK">Perak</option>
+      <option value="KEDAH">Kedah</option>
+      <option value="KELANTAN">Kelantan</option>
+      <option value="TERENGGANU">Terengganu</option>
+      <option value="PAHANG">Pahang</option>
+      <option value="NEGERI SEMBILAN">Negeri Sembilan</option>
+      <option value="MELAKA">Melaka</option>
+      <option value="PERLIS">Perlis</option>
+      <option value="SABAH">Sabah</option>
+      <option value="SARAWAK">Sarawak</option>
+      <option value="LABUAN">Labuan</option>
+      <option value="PUTRAJAYA">Putrajaya</option>
+    </select>
+    
+    <input type="text" id="city" placeholder="City" required>
+    <input type="text" id="postcode" placeholder="Postcode" required>
+  </div>
+
+  <div class="section">
+    <h3>People</h3>
+    <div id="peopleContainer"></div>
+    <button type="button" id="addPerson">Add Person</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

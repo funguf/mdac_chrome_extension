@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "MDAC Form Filler",
+  "version": "1.0",
+  "description": "Automatically fill Malaysian MDAC immigration forms",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://imigresen-online.imi.gov.my/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "MDAC Form Filler"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://imigresen-online.imi.gov.my/mdac/*",
+        "https://imigresen-online.imi.gov.my/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
