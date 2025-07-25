@@ -10,7 +10,7 @@ A Chrome extension that automates form filling for the Malaysian Department of I
 - 🌍 **Comprehensive Country Support**: Supports all 250+ nationalities and 90+ international dialing codes available in the MDAC system
 - 📅 **Smart Date Handling**: Automatically converts between different date formats (DD/MM/YYYY ↔ YYYY-MM-DD)
 - 🔄 **Data Validation**: Validates required fields before form submission
-- 💾 **Local Storage**: Automatically saves form data locally in the browser
+- 💾 **Local Storage**: Save form data locally on your machine
 
 ## Installation
 
